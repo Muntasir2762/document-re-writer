@@ -4,13 +4,13 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://DocumentRewriter.test',
+    'url' => 'http://localhost',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:egZRgiNlrpnXJ96cHChFBTMmqRPfs7jsXYXXtU6iN3w=',
+    'key' => 'base64:3JQlyrByEioZj1XUnl/KcY2KrWhHVsomDng1oBSS8Bg=',
     'cipher' => 'AES-256-CBC',
     'maintenance' => 
     array (
@@ -197,8 +197,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\document-re-writer\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\laragon\\www\\document-re-writer\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -371,14 +371,14 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\app',
+        'root' => 'C:\\laragon\\www\\document-re-writer\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\app/public',
-        'url' => 'http://DocumentRewriter.test/storage',
+        'root' => 'C:\\laragon\\www\\document-re-writer\\storage\\app/public',
+        'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -397,7 +397,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\document-re-writer\\public\\storage' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\app/public',
+      'C:\\laragon\\www\\document-re-writer\\public\\storage' => 'C:\\laragon\\www\\document-re-writer\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -436,14 +436,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\document-re-writer\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\document-re-writer\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -508,7 +508,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\document-re-writer\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -575,7 +575,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\document-re-writer\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\document-re-writer\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -647,7 +647,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'DocumentRewriter.test',
+      5 => 'localhost',
     ),
     'guard' => 
     array (
@@ -687,7 +687,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\document-re-writer\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -707,9 +707,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\document-re-writer\\resources\\views',
+      0 => 'C:\\laragon\\www\\document-re-writer\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\document-re-writer\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\document-re-writer\\storage\\framework\\views',
   ),
   'image' => 
   array (
@@ -790,7 +790,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'C:\\xampp\\htdocs\\document-re-writer',
+    'remote_sites_path' => 'C:\\laragon\\www\\document-re-writer',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

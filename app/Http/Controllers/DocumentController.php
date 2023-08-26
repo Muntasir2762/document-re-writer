@@ -37,24 +37,46 @@ class DocumentController extends Controller
 
     protected function convertDocToHtml($filename)
     {
-        //dd(public_path("uploads/$filename"));
-        $doc = IOFactory::load(public_path("uploads/$filename"));
-        //dd($doc);
-        $htmlContent = '';
+        // //dd(public_path("uploads/$filename"));
+        // $doc = IOFactory::load(public_path("uploads/$filename"));
+        // //dd($doc);
+        // $htmlContent = '';
 
-        foreach ($doc->getSections() as $section) {
-            foreach ($section->getElements() as $element) {
-                //dd($element->getText());
-                if ($element instanceof \PhpOffice\PhpWord\Element\TextRun) {
-                    //dd($element instanceof \PhpOffice\PhpWord\Element\TextRun);
-                    //$htmlContent .= '<p>' . $element->getText() . '</p>';
-                    $htmlContent .= '<p>' . 'Hello' . '</p>';
+        // foreach ($doc->getSections() as $section) {
+        //     foreach ($section->getElements() as $element) {
+        //         //dd($element->getText());
+        //         if ($element instanceof \PhpOffice\PhpWord\Element\TextRun) {
+        //             //dd($element instanceof \PhpOffice\PhpWord\Element\TextRun);
+        //             //$htmlContent .= '<p>' . $element->getText() . '</p>';
+        //             $htmlContent .= '<p>' . 'Hello' . '</p>';
+        //         }
+        //         // You can handle images, formatting, lists, etc., similarly
+        //     }
+        // }
+
+        // return $htmlContent;
+
+        $content = '';
+        $phpWord = IOFactory::load(public_path("uploads/$filename"));
+
+        foreach($phpWord->getSections() as $section) {
+            foreach($section->getElements() as $element) {
+                if (method_exists($element, 'getElements')) {
+                    foreach($element->getElements() as $childElement) {
+                        if (method_exists($childElement, 'getText')) {
+                            $content .= $childElement->getText() . ' ';
+                        }
+                        else if (method_exists($childElement, 'getContent')) {
+                            $content .= $childElement->getContent() . ' ';
+                        }
+                    }
                 }
-                // You can handle images, formatting, lists, etc., similarly
+                else if (method_exists($element, 'getText')) {
+                    $content .= $element->getText() . ' ';
+                }
             }
         }
-
-        return $htmlContent;
+        return $content;
     }
 
     public function viewFile($filename)
