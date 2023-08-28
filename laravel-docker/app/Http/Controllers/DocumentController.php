@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UploadedFile;
 use PhpOffice\PhpWord\IOFactory;
 use Auth;
+use PhpOffice\PhpWord\PhpWord;
 
 class DocumentController extends Controller
 {
@@ -26,10 +27,6 @@ class DocumentController extends Controller
 
 
             return view('upload.editor', compact('htmlContent'));
-            // Convert DOC to HTML
-
-            //return "File Uploaded Successfully";
-            //return redirect("/view/$fileName");
         }
 
         return 'No document uploaded.';
@@ -37,25 +34,6 @@ class DocumentController extends Controller
 
     protected function convertDocToHtml($filename)
     {
-        // //dd(public_path("uploads/$filename"));
-        // $doc = IOFactory::load(public_path("uploads/$filename"));
-        // //dd($doc);
-        // $htmlContent = '';
-
-        // foreach ($doc->getSections() as $section) {
-        //     foreach ($section->getElements() as $element) {
-        //         //dd($element->getText());
-        //         if ($element instanceof \PhpOffice\PhpWord\Element\TextRun) {
-        //             //dd($element instanceof \PhpOffice\PhpWord\Element\TextRun);
-        //             //$htmlContent .= '<p>' . $element->getText() . '</p>';
-        //             $htmlContent .= '<p>' . 'Hello' . '</p>';
-        //         }
-        //         // You can handle images, formatting, lists, etc., similarly
-        //     }
-        // }
-
-        // return $htmlContent;
-
         $content = '';
         $phpWord = IOFactory::load(public_path("uploads/$filename"));
 
@@ -79,11 +57,19 @@ class DocumentController extends Controller
         return $content;
     }
 
-    public function viewFile($filename)
+    public function editedContent (Request $request)
     {
-        //$docUrl = "https://docs.google.com/viewer?url=" . urlencode(asset("uploads/$filename"));
-        $docUrl = "";
-        //dd($docUrl);
-        return view('upload.view-file', compact('docUrl'));
+        // Create a new instance of PhpWord
+        $phpWord = new PhpWord();
+
+        $section = $phpWord->addSection();
+
+        $htmlContent = $request->editor;
+        \PhpOffice\PhpWord\Shared\Html::addHtml($section, $htmlContent, false, false);
+        $filePath = public_path('generated_document.docx');
+        $phpWord->save($filePath, "Word2007");
+        return response()->download($filePath)->deleteFileAfterSend(true);
+
     }
+
 }

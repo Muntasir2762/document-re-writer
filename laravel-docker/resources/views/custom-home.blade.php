@@ -12,8 +12,8 @@
         <div class="text-center">
             <h1>Welcome to Our App</h1>
             <p>Start your journey with us</p>
-            <a href="{{ route('login') }}" class="btn btn-primary btn-lg mr-3">Login</a>
-            <a href="{{ route('register') }}" class="btn btn-secondary btn-lg">Register</a>
+            <a href="{{ url('/user/login')}}" class="btn btn-primary btn-lg mr-3">Login</a>
+            <a href="{{ url('/user/registration') }}" class="btn btn-secondary btn-lg">Register</a>
         </div>
     </div>
 

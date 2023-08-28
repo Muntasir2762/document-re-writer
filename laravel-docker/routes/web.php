@@ -2,24 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+//User Custom Login...
+Route::get('/user/login', [App\Http\Controllers\AuthController::class, 'showLoginForm']);
+Route::post('/user/login', [App\Http\Controllers\AuthController::class, 'userLogin']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/user/registration', [App\Http\Controllers\AuthController::class, 'showRegistrationForm']);
+Route::post('/user/registration', [App\Http\Controllers\AuthController::class, 'userRegistration']);
+//User Custom Login...
 Route::get('/', [App\Http\Controllers\HomePageController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/upload', [App\Http\Controllers\DocumentController::class, 'upload'])->name('upload');
-Route::get('/view/{filename}', [App\Http\Controllers\DocumentController::class, 'viewFile'])->name('view');
+Route::post('/user/edited-content', [App\Http\Controllers\DocumentController::class, 'editedContent']);
+
