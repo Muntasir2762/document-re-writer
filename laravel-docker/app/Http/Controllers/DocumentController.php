@@ -6,30 +6,37 @@ use Illuminate\Http\Request;
 use App\Models\UploadedFile;
 use PhpOffice\PhpWord\IOFactory;
 use Auth;
+use Carbon\Carbon;
 use PhpOffice\PhpWord\PhpWord;
 
 class DocumentController extends Controller
 {
     public function upload(Request $request)
     {
-        if ($request->hasFile('document')) {
-            $file = $request->file('document');
-            $fileName = $file->getClientOriginalName();
-            $file->move(public_path('uploads'), $fileName);
+        $user = Auth::user();
+        if($user->is_blocked != true){
+            if ($request->hasFile('document')) {
+                $file = $request->file('document');
+                $fileName = $file->getClientOriginalName();
+                $file->move(public_path('uploads'), $fileName);
 
-            $uploadFile = new UploadedFile();
-            $uploadFile->user_id = Auth::user()->id;
-            $uploadFile->file_name = $fileName;
-            $uploadFile->save();
+                $uploadFile = new UploadedFile();
+                $uploadFile->user_id = Auth::user()->id;
+                $uploadFile->file_name = $fileName;
+                $uploadFile->save();
 
-            // Convert DOC to HTML
-            $htmlContent = $this->convertDocToHtml($fileName);
+                // Convert DOC to HTML
+                $htmlContent = $this->convertDocToHtml($fileName);
 
 
-            return view('upload.editor', compact('htmlContent'));
+                return view('upload.editor', compact('htmlContent'));
+            }
+            else{
+                return 'No document uploaded.';
+            }
         }
-
-        return 'No document uploaded.';
+        toastr()->error('You are temporarily blocked!!');
+        return redirect()->back();
     }
 
     protected function convertDocToHtml($filename)
@@ -59,16 +66,43 @@ class DocumentController extends Controller
 
     public function editedContent (Request $request)
     {
-        // Create a new instance of PhpWord
-        $phpWord = new PhpWord();
+        $user = Auth::user();
 
-        $section = $phpWord->addSection();
+        if($user->is_blocked != true){
+            // Create a new instance of PhpWord
+            $phpWord = new PhpWord();
 
-        $htmlContent = $request->editor;
-        \PhpOffice\PhpWord\Shared\Html::addHtml($section, $htmlContent, false, false);
-        $filePath = public_path('generated_document.docx');
-        $phpWord->save($filePath, "Word2007");
-        return response()->download($filePath)->deleteFileAfterSend(true);
+            $section = $phpWord->addSection();
+
+            $htmlContent = $request->editor;
+            \PhpOffice\PhpWord\Shared\Html::addHtml($section, $htmlContent, false, false);
+            $filePath = public_path('generated_document.docx');
+            $phpWord->save($filePath, "Word2007");
+
+            //Record File Processing...
+            if($user->limit_updated_at == null){
+                $user->limit_updated_at = Carbon::now();
+                $user->save();
+            }
+            $limit_updated_at = Carbon::parse($user->limit_updated_at);
+            if($limit_updated_at <= $limit_updated_at->addMinutes(10)){
+                $user->limit_updated_at = Carbon::now();
+                $user->limit_count = $user->limit_count+1;
+                $user->save();
+            }
+
+            if(($user->limit_count >=3) && ($user->limit_updated_at <= $user->limit_updated_at->addMinutes(10))){
+                $user->is_blocked = true;
+                $user->save();
+            }
+            return response()->download($filePath)->deleteFileAfterSend(true);
+            //Record File Processing...
+        }
+
+        else{
+            toastr()->error('You are temporarily blocked!!');
+            return redirect('/home');
+        }
 
     }
 

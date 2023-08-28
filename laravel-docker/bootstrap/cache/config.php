@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:k2ud4ElB9dOH9olIr4f5jXukYr7qu/xR+aN817i3LfI=',
+    'key' => 'base64:mZk6ssJqWCsxsdDO3C08W99bYcAYtf4VqG2k2IyvXMk=',
     'cipher' => 'AES-256-CBC',
     'maintenance' => 
     array (
@@ -197,8 +197,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -371,13 +371,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -397,7 +397,7 @@
     ),
     'links' => 
     array (
-      'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\public\\storage' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\app/public',
+      'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\public\\storage' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -436,14 +436,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -508,7 +508,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -575,7 +575,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -687,7 +687,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -707,13 +707,95 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\resources\\views',
     ),
-    'compiled' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker\\storage\\framework\\views',
   ),
   'image' => 
   array (
     'driver' => 'gd',
+  ),
+  'flasher' => 
+  array (
+    'default' => 'flasher',
+    'root_script' => 
+    array (
+      'cdn' => 'https://cdn.jsdelivr.net/npm/@flasher/flasher@1.3.1/dist/flasher.min.js',
+      'local' => '/vendor/flasher/flasher.min.js',
+    ),
+    'scripts' => 
+    array (
+    ),
+    'styles' => 
+    array (
+      'cdn' => 
+      array (
+        0 => 'https://cdn.jsdelivr.net/npm/@flasher/flasher@1.3.1/dist/flasher.min.css',
+      ),
+      'local' => 
+      array (
+        0 => '/vendor/flasher/flasher.min.css',
+      ),
+    ),
+    'options' => 
+    array (
+    ),
+    'use_cdn' => true,
+    'auto_translate' => true,
+    'auto_render' => true,
+    'flash_bag' => 
+    array (
+      'enabled' => true,
+      'mapping' => 
+      array (
+        'success' => 
+        array (
+          0 => 'success',
+        ),
+        'error' => 
+        array (
+          0 => 'error',
+          1 => 'danger',
+        ),
+        'warning' => 
+        array (
+          0 => 'warning',
+          1 => 'alarm',
+        ),
+        'info' => 
+        array (
+          0 => 'info',
+          1 => 'notice',
+          2 => 'alert',
+        ),
+      ),
+    ),
+    'filter_criteria' => 
+    array (
+    ),
+    'presets' => 
+    array (
+      'created' => 
+      array (
+        'type' => 'success',
+        'message' => 'The resource was created',
+      ),
+      'updated' => 
+      array (
+        'type' => 'success',
+        'message' => 'The resource was updated',
+      ),
+      'saved' => 
+      array (
+        'type' => 'success',
+        'message' => 'The resource was saved',
+      ),
+      'deleted' => 
+      array (
+        'type' => 'success',
+        'message' => 'The resource was deleted',
+      ),
+    ),
   ),
   'flare' => 
   array (
@@ -790,7 +872,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'C:\\laragon\\www\\document-re-writer\\document-re-writer\\laravel-docker',
+    'remote_sites_path' => 'C:\\xampp\\htdocs\\document_rewriter_project\\document-re-writer\\laravel-docker',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',
@@ -816,6 +898,34 @@
       8 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\ModelArgumentReducer',
       9 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\CollectionArgumentReducer',
       10 => 'Spatie\\Backtrace\\Arguments\\Reducers\\StringableArgumentReducer',
+    ),
+  ),
+  'flasher_toastr' => 
+  array (
+    'scripts' => 
+    array (
+      'cdn' => 
+      array (
+        0 => 'https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js',
+        1 => 'https://cdn.jsdelivr.net/npm/@flasher/flasher-toastr@1.2.4/dist/flasher-toastr.min.js',
+      ),
+      'local' => 
+      array (
+        0 => '/vendor/flasher/jquery.min.js',
+        1 => '/vendor/flasher/flasher-toastr.min.js',
+      ),
+    ),
+    'styles' => 
+    array (
+    ),
+    'options' => 
+    array (
+    ),
+  ),
+  'toastr' => 
+  array (
+    'options' => 
+    array (
     ),
   ),
   'tinker' => 

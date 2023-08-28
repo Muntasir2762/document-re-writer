@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_blocked')->default(false)->after('email');
+            $table->integer('limit_count')->default(0)->after('is_blocked');
             $table->timestamp('limit_updated_at')->nullable();
         });
     }
