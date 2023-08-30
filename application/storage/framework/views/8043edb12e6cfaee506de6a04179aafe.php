@@ -39,7 +39,7 @@
         <?php echo csrf_field(); ?>
         <div class="form-group">
             <label for="file">Upload Document:</label>
-            <input type="file" class="form-control-file" name="document" accept=".pdf,.doc,.docx">
+            <input type="file" class="form-control-file" name="document" accept=".docx">
         </div>
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
